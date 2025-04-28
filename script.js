@@ -1,5 +1,5 @@
 // Defina o valor manualmente
-const risco = 58; // Altere aqui a porcentagem de risco
+const risco = 61; // Altere aqui a porcentagem de risco
 
 // Lista de mensagens para simular coleta de dados
 const mensagens = [
