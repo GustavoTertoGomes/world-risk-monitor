@@ -1,5 +1,5 @@
 // URL do seu arquivo JSON no GitHub (direto no "raw")
-const url = './risco.json';
+const url = '/risco.json';
 
 // Função para carregar o risco
 async function carregarRisco() {
