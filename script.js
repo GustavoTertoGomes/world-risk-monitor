@@ -1,7 +1,7 @@
 // Defina o valor manualmente
 const risco = 61; // Altere aqui a porcentagem de risco
 
-// Lista de mensagens para simular coleta de dados
+// Mensagens simuladas de análise global
 const mensagens = [
     "Conectando a servidores globais...",
     "Coletando dados de segurança internacional...",
@@ -10,7 +10,6 @@ const mensagens = [
     "Calculando risco global atual..."
 ];
 
-// Função para mostrar as mensagens simuladas
 function mostrarMensagens(callback) {
     const riscoInfo = document.getElementById('risco-info');
     let index = 0;
@@ -20,12 +19,11 @@ function mostrarMensagens(callback) {
         index++;
         if (index >= mensagens.length) {
             clearInterval(intervaloMensagens);
-            setTimeout(callback, 500); // Pequena pausa antes de começar a carregar a barra
+            setTimeout(callback, 500);
         }
-    }, 1000); // Troca de mensagem a cada 1 segundo
+    }, 1000);
 }
 
-// Função para carregar o risco na barra de progresso
 function carregarRisco() {
     const progressBar = document.getElementById('progress-bar');
     const percentage = document.getElementById('percentage');
@@ -41,19 +39,17 @@ function carregarRisco() {
             progressBar.style.width = valorAtual + '%';
             percentage.innerText = valorAtual + '%';
 
-            // Mudança de cor conforme porcentagem
             if (valorAtual < 70) {
-                progressBar.style.backgroundColor = '#00ff00'; // verde neon
+                progressBar.style.backgroundColor = '#00ff00';
             } else if (valorAtual < 85) {
-                progressBar.style.backgroundColor = '#ffff00'; // amarelo
+                progressBar.style.backgroundColor = '#ffff00';
             } else {
-                progressBar.style.backgroundColor = '#ff0000'; // vermelho
+                progressBar.style.backgroundColor = '#ff0000';
             }
         }
-    }, 20); // velocidade da animação da barra
+    }, 20);
 }
 
-// Quando a página carregar, primeiro mostra as mensagens, depois a barra
 window.onload = () => {
     mostrarMensagens(carregarRisco);
 };
