@@ -1,7 +1,7 @@
 // script.js
 
 // Defina aqui o nível de risco atual (mude aqui para atualizar o site!)
-const currentRisk = 99; // Exemplo: 61%
+const currentRisk = 61; // Exemplo: 61%
 
 const progressBar = document.getElementById('progress-bar');
 const progressText = document.getElementById('progress-text');
