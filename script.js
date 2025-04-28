@@ -1,55 +1,37 @@
-// Defina o valor manualmente
-const risco = 61; // Altere aqui a porcentagem de risco
+// script.js
 
-// Mensagens simuladas de análise global
-const mensagens = [
-    "Conectando a servidores globais...",
-    "Coletando dados de segurança internacional...",
-    "Analisando movimentações militares...",
-    "Verificando estabilidade política global...",
-    "Calculando risco global atual..."
-];
+// Defina aqui o nível de risco atual (mude aqui para atualizar o site!)
+const currentRisk = 61; // Exemplo: 61%
 
-function mostrarMensagens(callback) {
-    const riscoInfo = document.getElementById('risco-info');
-    let index = 0;
+const progressBar = document.getElementById('progress-bar');
+const progressText = document.getElementById('progress-text');
 
-    const intervaloMensagens = setInterval(() => {
-        riscoInfo.innerText = mensagens[index];
-        index++;
-        if (index >= mensagens.length) {
-            clearInterval(intervaloMensagens);
-            setTimeout(callback, 500);
-        }
-    }, 1000);
-}
-
-function carregarRisco() {
-    const progressBar = document.getElementById('progress-bar');
-    const percentage = document.getElementById('percentage');
-    const riscoInfo = document.getElementById('risco-info');
-
-    let valorAtual = 0;
-    const intervalo = setInterval(() => {
-        if (valorAtual >= risco) {
-            clearInterval(intervalo);
-            riscoInfo.innerText = `Última atualização manual. Nível de risco global atual: ${risco}%`;
+// Função para animar a barra de progresso
+function animateProgressBar() {
+    let width = 0;
+    const interval = setInterval(() => {
+        if (width >= currentRisk) {
+            clearInterval(interval);
+            changeBarColor(width); // Garante que a cor final seja correta
         } else {
-            valorAtual++;
-            progressBar.style.width = valorAtual + '%';
-            percentage.innerText = valorAtual + '%';
-
-            if (valorAtual < 70) {
-                progressBar.style.backgroundColor = '#00ff00';
-            } else if (valorAtual < 85) {
-                progressBar.style.backgroundColor = '#ffff00';
-            } else {
-                progressBar.style.backgroundColor = '#ff0000';
-            }
+            width++;
+            progressBar.style.width = width + '%';
+            progressText.innerText = width + '%';
+            changeBarColor(width);
         }
-    }, 20);
+    }, 30); // velocidade da animação
 }
 
-window.onload = () => {
-    mostrarMensagens(carregarRisco);
-};
+// Função para mudar a cor da barra dependendo do risco
+function changeBarColor(risk) {
+    if (risk >= 85) {
+        progressBar.style.backgroundColor = '#ff0000'; // Vermelho
+    } else if (risk >= 70) {
+        progressBar.style.backgroundColor = '#ffa500'; // Laranja
+    } else {
+        progressBar.style.backgroundColor = '#00ff00'; // Verde neon
+    }
+}
+
+// Chama a função quando o site carrega
+window.onload = animateProgressBar;
