@@ -1,13 +1,11 @@
 body {
-  background-color: #000;
+  background: #000 url('fundo.jpg') no-repeat center center fixed;
+  background-size: cover;
   color: #0f0;
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
   margin: 0;
   padding: 0;
-  background: #000 url('images/fundo.jpg') no-repeat center center fixed;
-  background-size: cover;
-  position: relative;
 }
 
 body::before {
